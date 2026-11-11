@@ -31,13 +31,47 @@
     body {
       background: linear-gradient(135deg, var(--page-start), var(--page-end));
       min-height: 100vh;
+      padding-bottom: 90px; /* Space for floating ticker on mobile */
     }
 
     .page {
       width: 100%;
       max-width: 420px;
       margin: 0 auto;
-      padding: 48px 16px;
+      padding: 24px 16px 48px;
+    }
+
+    /* --- Scarcity Banner Above Logo --- */
+    .scarcity-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(220, 38, 38, 0.08);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 30px;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red);
+      text-align: center;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+      animation: pulse-ring 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-ring {
+      to {
+        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+      }
     }
 
     .logo-wrap {
@@ -153,17 +187,85 @@
       font-size: 14px;
     }
 
+    /* --- Floating Social Proof Ticker --- */
+    .proof-ticker {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      max-width: 380px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    }
+
+    .proof-ticker.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .proof-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .proof-content {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .proof-content strong {
+      color: #0f172a;
+    }
+
+    .proof-time {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
     @media (min-width: 768px) {
       .page { padding-top: 48px; }
       .logo { height: 96px; }
       h1 { font-size: 30px; }
       .card { padding: 32px; }
+      .proof-ticker {
+        left: 24px;
+        right: auto;
+      }
     }
   </style>
 </head>
 
 <body>
   <main class="page">
+    
+    <!-- Scarcity Banner Above Logo -->
+    <div class="scarcity-banner">
+      <span class="pulse-dot"></span>
+      <span>⚠️ Limited Spots Remaining: <strong id="spots-count">14</strong>/100 Gift Cards Claimed Today</span>
+    </div>
+
     <div class="logo-wrap">
       <img class="logo" src="./logo.png" alt="CostSaves Rewards Program">
     </div>
@@ -181,7 +283,7 @@
       </ol>
     </section>
 
-    <!-- CTA Button without href so no link preview shows on hover -->
+    <!-- CTA Button -->
     <a class="cta" id="start-btn" data-url="https://giftclick.org/?offer_id=4248&aff_id=3083">START NOW</a>
 
     <section class="faq">
@@ -206,13 +308,74 @@
     <footer>© 2025 All rights reserved.</footer>
   </main>
 
+  <!-- Social Proof Ticker HTML -->
+  <div class="proof-ticker" id="proof-ticker">
+    <div class="proof-avatar" id="proof-avatar">SM</div>
+    <div class="proof-content">
+      <div id="proof-text"><strong>Sarah M.</strong> from NY just claimed a <strong>$500 BJ’s Card</strong></div>
+      <div class="proof-time" id="proof-time">2 mins ago • Verified Claim</div>
+    </div>
+  </div>
+
   <script>
+    // CTA Button Click Router
     document.getElementById('start-btn').addEventListener('click', function() {
       const targetUrl = this.getAttribute('data-url');
       if (targetUrl) {
         window.location.href = targetUrl;
       }
     });
+
+    // Dynamic Live Spot Count Decrement
+    let currentSpots = 14;
+    const spotsEl = document.getElementById('spots-count');
+    
+    function decrementSpots() {
+      if (currentSpots > 3) {
+        currentSpots -= Math.floor(Math.random() * 2) + 1;
+        spotsEl.innerText = currentSpots;
+      }
+    }
+    setInterval(decrementSpots, 7000);
+
+    // Rotating Social Proof Data
+    const notifications = [
+      { name: "Sarah M.", location: "NY", amount: "$500", time: "2 mins ago" },
+      { name: "Michael T.", location: "FL", amount: "$750", time: "Just now" },
+      { name: "Jessica R.", location: "MA", amount: "$500", time: "4 mins ago" },
+      { name: "David K.", location: "PA", amount: "$750", time: "1 min ago" },
+      { name: "Amanda L.", location: "NC", amount: "$500", time: "3 mins ago" },
+      { name: "Chris B.", location: "OH", amount: "$750", time: "Just now" }
+    ];
+
+    let notifyIdx = 0;
+    const ticker = document.getElementById('proof-ticker');
+    const avatar = document.getElementById('proof-avatar');
+    const text = document.getElementById('proof-text');
+    const time = document.getElementById('proof-time');
+
+    function showNextNotification() {
+      const data = notifications[notifyIdx];
+      const initials = data.name.split(' ').map(n => n[0]).join('');
+
+      avatar.innerText = initials;
+      text.innerHTML = `<strong>${data.name}</strong> from ${data.location} just claimed a <strong>${data.amount} BJ’s Card</strong>`;
+      time.innerText = `${data.time} • Verified Claim`;
+
+      ticker.classList.add('active');
+
+      setTimeout(() => {
+        ticker.classList.remove('active');
+      }, 3500);
+
+      notifyIdx = (notifyIdx + 1) % notifications.length;
+    }
+
+    // Trigger initial notification after 1.5s, then repeat every 6s
+    setTimeout(() => {
+      showNextNotification();
+      setInterval(showNextNotification, 6000);
+    }, 1500);
   </script>
 </body>
 </html>
