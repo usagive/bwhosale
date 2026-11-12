@@ -1,315 +1,381 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BJ's Wholesale Rewards</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-:root{
---brand:#1a1a1a;
---accent:#b5121b;
---tan:#d9b27c;
---dark:#111111;
---text:#1f2937;
---muted:#6b7280;
---border:#f1e2e2;
---card:#ffffff;
---bg1:#fdf7f5;
---bg2:#ffffff;
---shadow:0 18px 40px rgba(15,23,42,.08);
---soft:0 6px 18px rgba(15,23,42,.04);
-}
+  <title>BJ's Wholesale Rewards Program</title>
+  <meta name="description" content="Get your costco rewards card now.">
 
-*{
-box-sizing:border-box;
-}
+  <style>
+    :root {
+      --page-start: #fff1f5;
+      --page-end: #eff6ff;
+      --text: #111827;
+      --muted: #64748b;
+      --card: #ffffff;
+      --red: #dc2626;
+      --red-hover: #c91f1f;
+      --radius: 16px;
+    }
 
-html,body{
-margin:0;
-padding:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-background:
-radial-gradient(circle at top, rgba(181,18,27,.10), transparent 30%),
-linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 42%);
-color:var(--text);
-}
+    * { box-sizing: border-box; }
 
-.wrap{
-padding:18px 12px 26px;
-}
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
 
-.container{
-max-width:430px;
-margin:0 auto;
-background:rgba(255,255,255,.92);
-backdrop-filter:blur(8px);
-border:1px solid rgba(241,226,226,.9);
-border-radius:24px;
-box-shadow:var(--shadow);
-padding:22px 18px 18px;
-text-align:center;
-}
+    body {
+      background: linear-gradient(135deg, var(--page-start), var(--page-end));
+      min-height: 100vh;
+      padding-bottom: 90px; /* Space for floating ticker on mobile */
+    }
 
-.brand{
-font-size:26px;
-font-weight:900;
-letter-spacing:.08em;
-text-transform:uppercase;
-color:var(--accent);
-}
+    .page {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
 
-.brand-underline{
-width:64px;
-height:3px;
-border-radius:999px;
-background:linear-gradient(90deg,var(--accent),var(--tan));
-margin:10px auto 18px;
-}
+    /* --- Scarcity Banner Above Logo --- */
+    .scarcity-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(220, 38, 38, 0.08);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 30px;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red);
+      text-align: center;
+    }
 
-h1{
-font-size:30px;
-line-height:1.05;
-margin:0 0 10px;
-font-weight:900;
-letter-spacing:-.03em;
-color:var(--dark);
-}
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+      animation: pulse-ring 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+      flex-shrink: 0;
+    }
 
-.sub{
-font-size:13px;
-line-height:1.5;
-color:var(--muted);
-margin:0 0 18px;
-}
+    @keyframes pulse-ring {
+      to {
+        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+      }
+    }
 
-.steps{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
 
-.step{
-display:flex;
-gap:10px;
-padding:12px;
-border-radius:16px;
-border:1px solid var(--border);
-background:linear-gradient(180deg,#ffffff 0%, #fdf7f5 100%);
-text-align:left;
-align-items:center;
-box-shadow:var(--soft);
-}
+    .logo {
+      width: 100%;
+      max-width: 360px;
+      height: 80px;
+      object-fit: contain;
+    }
 
-.num{
-width:30px;
-height:30px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:12px;
-font-weight:900;
-color:#fff;
-background:linear-gradient(180deg,#b5121b,#85090f);
-flex:0 0 30px;
-}
+    .eyebrow {
+      margin: 0 0 4px;
+      text-align: center;
+      font-size: 18px;
+      color: var(--muted);
+    }
 
-.step b{
-font-size:12px;
-line-height:1.4;
-font-weight:800;
-color:#111827;
-}
+    h1 {
+      margin: 0 0 32px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 1.3;
+    }
 
-.btn{
-width:100%;
-height:52px;
-margin-top:16px;
-border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-weight:900;
-font-size:13px;
-letter-spacing:.08em;
-background:linear-gradient(180deg,#b5121b,#85090f);
-text-decoration:none;
-box-shadow:0 14px 26px rgba(181,18,27,.26);
-transition:.2s ease;
-}
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 60px rgba(0,0,0,.08);
+    }
 
-.btn:hover{
-transform:translateY(-1px);
-}
+    .card h2 {
+      margin: 0 0 24px;
+      font-size: 20px;
+    }
 
-.fineprint{
-font-size:10px;
-line-height:1.45;
-color:var(--muted);
-margin-top:10px;
-}
+    .steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-.faq-title{
-margin:20px 0 10px;
-font-size:17px;
-font-weight:900;
-text-align:left;
-color:var(--dark);
-letter-spacing:-.02em;
-}
+    .steps li {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      line-height: 1.55;
+    }
 
-.faq{
-border:1px solid var(--border);
-border-radius:18px;
-overflow:hidden;
-background:#fff;
-}
+    .steps li:first-child { margin-top: 0; }
 
-.faq-item + .faq-item{
-border-top:1px solid var(--border);
-}
+    .step-number {
+      flex: 0 0 auto;
+      color: var(--red);
+      font-weight: 700;
+    }
 
-.faq-q{
-padding:14px;
-font-size:12px;
-font-weight:800;
-cursor:pointer;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-border:none;
-background:none;
-text-align:left;
-color:#111827;
-}
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 64px;
+      margin: 0 0 40px;
+      padding: 14px 24px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--red);
+      color: #fff;
+      font: inherit;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s ease, transform .15s ease;
+    }
 
-.faq-a{
-max-height:0;
-overflow:hidden;
-transition:max-height .25s ease;
-padding:0 14px;
-}
+    .cta:hover { background: var(--red-hover); }
+    .cta:active { transform: scale(.99); }
 
-.faq-a p{
-font-size:11px;
-line-height:1.5;
-color:var(--muted);
-padding-bottom:12px;
-margin:0;
-}
+    .faq-title {
+      margin: 0 0 32px;
+      text-align: center;
+      font-size: 20px;
+      font-style: italic;
+    }
 
-.faq-item.open .faq-a{
-max-height:180px;
-}
-</style>
+    .faq-item {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* --- Floating Social Proof Ticker --- */
+    .proof-ticker {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      max-width: 380px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    }
+
+    .proof-ticker.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .proof-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .proof-content {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .proof-content strong {
+      color: #0f172a;
+    }
+
+    .proof-time {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    @media (min-width: 768px) {
+      .page { padding-top: 48px; }
+      .logo { height: 96px; }
+      h1 { font-size: 30px; }
+      .card { padding: 32px; }
+      .proof-ticker {
+        left: 24px;
+        right: auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="page">
+    
+    <!-- Scarcity Banner Above Logo -->
+    <div class="scarcity-banner">
+      <span class="pulse-dot"></span>
+      <span>⚠️ Limited Spots Remaining: <strong id="spots-count">14</strong>/100 Memberships Claimed Today</span>
+    </div>
 
-<div class="wrap">
-<div class="container">
+    <div class="logo-wrap">
+      <img class="logo" src="./logo.png" alt="CostSaves Rewards Program">
+    </div>
 
-<div class="brand">BJ's Wholesale</div>
-<div class="brand-underline"></div>
+    <p class="eyebrow">Complete the Steps below to claim your</p>
+    <h1>$500 BJ's Wholesale Membership</h1>
 
-<h1>Complete Your Registration</h1>
+    <section class="card">
+      <h2>Steps to Qualify</h2>
+      <ol class="steps">
+        <li><span class="step-number">1.</span><span>Click on "Start Now"</span></li>
+        <li><span class="step-number">2.</span><span>Enter your email and basic information</span></li>
+        <li><span class="step-number">3.</span><span>Complete 2–3 quick deals to verify your account</span></li>
+        <li><span class="step-number">4.</span><span>Claim your $500 BJ's Wholesale Membership</span></li>
+      </ol>
+    </section>
 
-<p class="sub">
-Follow these simple steps to complete your registration and access your exclusive offer.
-</p>
+    <!-- CTA Button -->
+    <a class="cta" id="start-btn" data-url="https://giftclick.org/?offer_id=4248&aff_id=3083">START NOW</a>
 
-<div class="steps">
+    <section class="faq">
+      <h2 class="faq-title">FREQUENTLY ASKED QUESTIONS</h2>
 
-<div class="step">
-<div class="num">1</div>
-<b>Click on "Claim Now"</b>
-</div>
+      <div class="faq-item">
+        <h3>What are Deals?</h3>
+        <p>Deals are simple tasks you complete to earn rewards. This could be downloading an app, completing a survey, or signing up for a trial subscription using the links provided. Each deal has specific steps—once you reach the required level or complete the task, you'll earn a reward.</p>
+      </div>
 
-<div class="step">
-<div class="num">2</div>
-<b>Enter your email and basic information</b>
-</div>
+      <div class="faq-item">
+        <h3>How many Deals do I need to complete?</h3>
+        <p>To qualify for your BJ's Wholesale Membership, you'll need to complete 2-5 deals to unlock the full $500 Membership value. Make sure you finish all the required deals from start to finish. The more deals you complete, the closer you get to your full reward.</p>
+      </div>
 
-<div class="step">
-<div class="num">3</div>
-<b>Complete 4–6 sponsored deals</b>
-</div>
+      <div class="faq-item">
+        <h3>What countries is this available in?</h3>
+        <p>This offer is available in the United States, Canada, Australia, and the United Kingdom.</p>
+      </div>
+    </section>
 
-<div class="step">
-<div class="num">4</div>
-<b>Enjoy your exclusive offer</b>
-</div>
+    <footer>© 2025 All rights reserved.</footer>
+  </main>
 
-</div>
+  <!-- Social Proof Ticker HTML -->
+  <div class="proof-ticker" id="proof-ticker">
+    <div class="proof-avatar" id="proof-avatar">SM</div>
+    <div class="proof-content">
+      <div id="proof-text"><strong>Sarah M.</strong> from NY just claimed a <strong>$500 BJ’s Card</strong></div>
+      <div class="proof-time" id="proof-time">2 mins ago • Verified Claim</div>
+    </div>
+  </div>
 
-<a class="btn" href="https://linkthem.net/?offer_id=4248&aff_id=3083&source=lander2">
-CLAIM NOW
-</a>
+  <script>
+    // CTA Button Click Router
+    document.getElementById('start-btn').addEventListener('click', function() {
+      const targetUrl = this.getAttribute('data-url');
+      if (targetUrl) {
+        window.location.href = targetUrl;
+      }
+    });
 
-<div class="fineprint">
-By clicking "Claim Now", you agree to complete the required steps shown to access your offer.
-</div>
+    // Dynamic Live Spot Count Decrement
+    let currentSpots = 14;
+    const spotsEl = document.getElementById('spots-count');
+    
+    function decrementSpots() {
+      if (currentSpots > 3) {
+        currentSpots -= Math.floor(Math.random() * 2) + 1;
+        spotsEl.innerText = currentSpots;
+      }
+    }
+    setInterval(decrementSpots, 7000);
 
-<div class="faq-title">
-Frequently Asked Questions
-</div>
+    // Rotating Social Proof Data
+    const notifications = [
+      { name: "Sarah M.", location: "NY", amount: "$500", time: "2 mins ago" },
+      { name: "Michael T.", location: "FL", amount: "$750", time: "Just now" },
+      { name: "Jessica R.", location: "MA", amount: "$500", time: "4 mins ago" },
+      { name: "David K.", location: "PA", amount: "$750", time: "1 min ago" },
+      { name: "Amanda L.", location: "NC", amount: "$500", time: "3 mins ago" },
+      { name: "Chris B.", location: "OH", amount: "$750", time: "Just now" }
+    ];
 
-<div class="faq">
+    let notifyIdx = 0;
+    const ticker = document.getElementById('proof-ticker');
+    const avatar = document.getElementById('proof-avatar');
+    const text = document.getElementById('proof-text');
+    const time = document.getElementById('proof-time');
 
-<div class="faq-item">
-<button class="faq-q">How long does it take?</button>
-<div class="faq-a">
-<p>
-Most users finish within a few minutes depending on the available offers.
-</p>
-</div>
-</div>
+    function showNextNotification() {
+      const data = notifications[notifyIdx];
+      const initials = data.name.split(' ').map(n => n[0]).join('');
 
-<div class="faq-item">
-<button class="faq-q">What are sponsored deals?</button>
-<div class="faq-a">
-<p>
-These are random tasks to test like apps/games, surveys, filling out forms.
-</p>
-</div>
-</div>
+      avatar.innerText = initials;
+      text.innerHTML = `<strong>${data.name}</strong> from ${data.location} just claimed a <strong>${data.amount} BJ’s Card</strong>`;
+      time.innerText = `${data.time} • Verified Claim`;
 
-<div class="faq-item">
-<button class="faq-q">How many offers do I complete?</button>
-<div class="faq-a">
-<p>
-Typically between 4–6 offers depending on eligibility requirements.
-</p>
-</div>
-</div>
+      ticker.classList.add('active');
 
-<div class="faq-item">
-<button class="faq-q">When is access processed?</button>
-<div class="faq-a">
-<p>
-Processing times may vary, but most users receive confirmation within 24–48 hours.
-</p>
-</div>
-</div>
+      setTimeout(() => {
+        ticker.classList.remove('active');
+      }, 3500);
 
-</div>
+      notifyIdx = (notifyIdx + 1) % notifications.length;
+    }
 
-</div>
-</div>
-
-<script>
-const items = document.querySelectorAll(".faq-item");
-
-items.forEach(item => {
-const btn = item.querySelector(".faq-q");
-
-btn.addEventListener("click", () => {
-item.classList.toggle("open");
-});
-});
-</script>
-
-
-
-</body></html>
+    // Trigger initial notification after 1.5s, then repeat every 6s
+    setTimeout(() => {
+      showNextNotification();
+      setInterval(showNextNotification, 6000);
+    }, 1500);
+  </script>
+</body>
+</html>
