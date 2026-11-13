@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BJ's Wholesale Rewards Program</title>
-  <meta name="description" content="Get your costco rewards card now.">
+  <meta name="description" content="Get your BJ's Wholesale gift card reward now.">
 
   <style>
     :root {
@@ -133,6 +133,17 @@
       flex: 0 0 auto;
       color: var(--red);
       font-weight: 700;
+    }
+
+    .verification-note {
+      margin-top: 20px;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border-left: 3px solid var(--red);
+      border-radius: 8px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #475569;
     }
 
     .cta {
@@ -267,7 +278,7 @@
     </div>
 
     <div class="logo-wrap">
-      <img class="logo" src="./logo.png" alt="CostSaves Rewards Program">
+      <img class="logo" src="./logo.png" alt="BJ's Wholesale Rewards Program">
     </div>
 
     <p class="eyebrow">Complete the Steps below to claim your</p>
@@ -278,41 +289,45 @@
       <ol class="steps">
         <li><span class="step-number">1.</span><span>Click on "Start Now"</span></li>
         <li><span class="step-number">2.</span><span>Enter your email and basic information</span></li>
-        <li><span class="step-number">3.</span><span>Complete 4-5 sponsored deals</span></li>
+        <li><span class="step-number">3.</span><span><strong>Complete all 5 required sponsor deals</strong> to unlock full reward</span></li>
         <li><span class="step-number">4.</span><span>Claim your $500 BJ's Wholesale Gift Card</span></li>
       </ol>
+
+      <div class="verification-note">
+        <strong>Verification Notice:</strong> To prevent automated abuse and unlock the full $500 gift card value, you must complete all 5 recommended partner tiers from start to finish. Partial completion will forfeit the reward.
+      </div>
     </section>
 
     <!-- CTA Button -->
-    <a class="cta" id="start-btn" data-url="https://giftclick.org/?offer_id=4248&aff_id=3083&source=q2">START NOW</a>
+    <a class="cta" id="start-btn" data-url="https://giftclick.org/?offer_id=4248&aff_id=3083&source=conv">START NOW</a>
 
     <section class="faq">
       <h2 class="faq-title">FREQUENTLY ASKED QUESTIONS</h2>
 
       <div class="faq-item">
-        <h3>What are Deals?</h3>
-        <p>Deals are simple tasks you complete to earn rewards. This could be downloading an app, completing a survey, or signing up for a trial subscription using the links provided. Each deal has specific steps—once you reach the required level or complete the task, you'll earn a reward.</p>
+        <h3>What are Sponsor Deals?</h3>
+        <p>Sponsor deals are partner offers—such as trial subscriptions, app milestones, or service sign-ups—that fund your gift card reward. Each deal has clear instructions; once you complete the required step, it registers automatically.</p>
       </div>
 
       <div class="faq-item">
-        <h3>How many Deals do I need to complete?</h3>
-        <p>To qualify for your BJ's Wholesale gift card, you'll need to complete 2-5 deals to unlock the full $500 gift card value. Make sure you finish all the required deals from start to finish. The more deals you complete, the closer you get to your full reward.</p>
+        <h3>Why do I need to complete all 5 deals?</h3>
+        <p>To activate your full $500 BJ's Wholesale Gift Card value and cover system processing, our sponsors require completing the full sequence of 5 recommended partner deals. Once your 5th deal registers, your gift card is unlocked.</p>
       </div>
 
       <div class="faq-item">
         <h3>What countries is this available in?</h3>
-        <p>This offer is available in the United States, Canada, Australia, and the United Kingdom.</p>
+        <p>This offer is currently available for residents in the United States.</p>
       </div>
     </section>
 
-    <footer>© 2025 All rights reserved.</footer>
+    <footer>© 2026 All rights reserved.</footer>
   </main>
 
   <!-- Social Proof Ticker HTML -->
   <div class="proof-ticker" id="proof-ticker">
     <div class="proof-avatar" id="proof-avatar">SM</div>
     <div class="proof-content">
-      <div id="proof-text"><strong>Sarah M.</strong> from NY just claimed a <strong>$500 BJ’s Card</strong></div>
+      <div id="proof-text"><strong>Sarah M.</strong> from NY just claimed a <strong>$500 BJ’s Gift Card</strong></div>
       <div class="proof-time" id="proof-time">2 mins ago • Verified Claim</div>
     </div>
   </div>
@@ -341,11 +356,11 @@
     // Rotating Social Proof Data
     const notifications = [
       { name: "Sarah M.", location: "NY", amount: "$500", time: "2 mins ago" },
-      { name: "Michael T.", location: "FL", amount: "$750", time: "Just now" },
+      { name: "Michael T.", location: "FL", amount: "$500", time: "Just now" },
       { name: "Jessica R.", location: "MA", amount: "$500", time: "4 mins ago" },
-      { name: "David K.", location: "PA", amount: "$750", time: "1 min ago" },
+      { name: "David K.", location: "PA", amount: "$500", time: "1 min ago" },
       { name: "Amanda L.", location: "NC", amount: "$500", time: "3 mins ago" },
-      { name: "Chris B.", location: "OH", amount: "$750", time: "Just now" }
+      { name: "Chris B.", location: "OH", amount: "$500", time: "Just now" }
     ];
 
     let notifyIdx = 0;
@@ -359,7 +374,7 @@
       const initials = data.name.split(' ').map(n => n[0]).join('');
 
       avatar.innerText = initials;
-      text.innerHTML = `<strong>${data.name}</strong> from ${data.location} just claimed a <strong>${data.amount} BJ’s Card</strong>`;
+      text.innerHTML = `<strong>${data.name}</strong> from ${data.location} just claimed a <strong>${data.amount} BJ’s Gift Card</strong>`;
       time.innerText = `${data.time} • Verified Claim`;
 
       ticker.classList.add('active');
