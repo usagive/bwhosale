@@ -1,218 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style data-precedence="default">
-/*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
-@layer properties{
-  @supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){
-    *,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-space-x-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-ordinal:initial;--tw-slashed-zero:initial;--tw-numeric-figure:initial;--tw-numeric-spacing:initial;--tw-numeric-fraction:initial;--tw-shadow:0 0#0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0#0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0#0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0#0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0#0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-duration:initial;--tw-ease:initial;--tw-content:"";--tw-animation-delay:0s;--tw-animation-direction:normal;--tw-animation-duration:initial;--tw-animation-fill-mode:none;--tw-animation-iteration-count:1;--tw-enter-blur:0;--tw-enter-opacity:1;--tw-enter-rotate:0;--tw-enter-scale:1;--tw-enter-translate-x:0;--tw-enter-translate-y:0;--tw-exit-blur:0;--tw-exit-opacity:1;--tw-exit-rotate:0;--tw-exit-scale:1;--tw-exit-translate-x:0;--tw-exit-translate-y:0}
-  }
-}
-@layer theme{
-  :root,:host{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--spacing:.25rem;--container-xl:36rem;--text-xs:.75rem;--text-xs--line-height:calc(1/.75);--text-sm:.875rem;--text-sm--line-height:calc(1.25/.875);--text-base:1rem;--text-base--line-height:calc(1.5/1);--text-lg:1.125rem;--text-lg--line-height:calc(1.75/1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75/1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2/1.5);--text-3xl:1.875rem;--text-5xl:3rem;--text-5xl--line-height:1;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--tracking-tight:-.025em;--tracking-wider:.05em;--leading-tight:1.25;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4,0,.2,1);--default-font-family:var(--font-sans);--color-background:var(--background);--color-foreground:var(--foreground);--color-border:var(--border)}
-}
-@layer base{
-  *,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}
-  html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");-webkit-tap-highlight-color:transparent}
-  h1,h2,h3{font-size:inherit;font-weight:inherit}
-  a{text-decoration:inherit}
-  svg{vertical-align:middle;display:block}
-  button,input{font:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}
-  button{appearance:button}
-  [hidden]:where(:not([hidden=until-found])){display:none!important}
-  *{border-color:var(--color-border)}
-  body{background-color:var(--color-background);color:var(--color-foreground)}
-}
-@layer utilities{
-  .mx-auto{margin-inline:auto}
-  .mt-1{margin-top:calc(var(--spacing)*1)}
-  .mt-2{margin-top:calc(var(--spacing)*2)}
-  .mt-4{margin-top:calc(var(--spacing)*4)}
-  .mt-5{margin-top:calc(var(--spacing)*5)}
-  .mt-6{margin-top:calc(var(--spacing)*6)}
-  .flex{display:flex}
-  .inline-flex{display:inline-flex}
-  .h-3\.5{height:calc(var(--spacing)*3.5)}
-  .h-4{height:calc(var(--spacing)*4)}
-  .h-7{height:calc(var(--spacing)*7)}
-  .min-h-screen{min-height:100vh}
-  .w-3\.5{width:calc(var(--spacing)*3.5)}
-  .w-4{width:calc(var(--spacing)*4)}
-  .w-7{width:calc(var(--spacing)*7)}
-  .w-full{width:100%}
-  .max-w-xl{max-width:var(--container-xl)}
-  .flex-1{flex:1}
-  .shrink-0{flex-shrink:0}
-  .cursor-pointer{cursor:pointer}
-  .flex-col{flex-direction:column}
-  .items-center{align-items:center}
-  .justify-between{justify-content:space-between}
-  .justify-center{justify-content:center}
-  .gap-2{gap:calc(var(--spacing)*2)}
-  .gap-3{gap:calc(var(--spacing)*3)}
-  .gap-4{gap:calc(var(--spacing)*4)}
-  .overflow-hidden{overflow:hidden}
-  .rounded-2xl{border-radius:calc(var(--radius) + 8px)}
-  .rounded-full{border-radius:3.40282e38px}
-  .rounded-lg{border-radius:var(--radius)}
-  .border{border-style:var(--tw-border-style);border-width:1px}
-  .border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}
-  .border-border{border-color:var(--border)}
-  .bg-card{background-color:var(--card)}
-  .bg-giftcard{background-color:var(--giftcard)}
-  .bg-primary{background-color:var(--primary)}
-  .bg-secondary\/40{background-color:var(--secondary)}
-  .p-5{padding:calc(var(--spacing)*5)}
-  .p-8{padding:calc(var(--spacing)*8)}
-  .px-3{padding-inline:calc(var(--spacing)*3)}
-  .px-3\.5{padding-inline:calc(var(--spacing)*3.5)}
-  .px-6{padding-inline:calc(var(--spacing)*6)}
-  .py-2{padding-block:calc(var(--spacing)*2)}
-  .py-4{padding-block:calc(var(--spacing)*4)}
-  .pb-4{padding-bottom:calc(var(--spacing)*4)}
-  .pt-0{padding-top:calc(var(--spacing)*0)}
-  .text-center{text-align:center}
-  .text-left{text-align:left}
-  .text-3xl{font-size:var(--text-3xl)}
-  .text-base{font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))}
-  .text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}
-  .text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}
-  .text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}
-  .text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}
-  .text-\[11px\]{font-size:11px}
-  .leading-tight{line-height:var(--leading-tight)}
-  .font-bold{font-weight:var(--font-weight-bold)}
-  .font-extrabold{font-weight:var(--font-weight-extrabold)}
-  .font-medium{font-weight:var(--font-weight-medium)}
-  .font-semibold{font-weight:var(--font-weight-semibold)}
-  .tracking-\[0\.2em\]{letter-spacing:.2em}
-  .tracking-tight{letter-spacing:var(--tracking-tight)}
-  .tracking-wider{letter-spacing:var(--tracking-wider)}
-  .text-foreground{color:var(--foreground)}
-  .text-giftcard-foreground{color:var(--giftcard-foreground)}
-  .text-muted-foreground{color:var(--muted-foreground)}
-  .text-primary{color:var(--primary)}
-  .text-primary-foreground{color:var(--primary-foreground)}
-  .uppercase{text-transform:uppercase}
-  .tabular-nums{font-variant-numeric:tabular-nums}
-  .shadow-sm{box-shadow:0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px -1px rgba(0,0,0,0.1)}
-  .transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
-  .transition-colors{transition-property:color,background-color,border-color;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
-  @media (hover:hover){
-    .hover\:bg-primary\/90:hover{background-color:var(--primary)}
-    .hover\:underline:hover{text-decoration-line:underline}
-  }
-  @media (width>=40rem){
-    .sm\:mt-6{margin-top:calc(var(--spacing)*6)}
-    .sm\:gap-6{gap:calc(var(--spacing)*6)}
-    .sm\:p-8{padding:calc(var(--spacing)*8)}
-    .sm\:px-4{padding-inline:calc(var(--spacing)*4)}
-    .sm\:py-3{padding-block:calc(var(--spacing)*3)}
-    .sm\:py-8{padding-block:calc(var(--spacing)*8)}
-    .sm\:text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}
-    .sm\:text-5xl{font-size:var(--text-5xl);line-height:var(--tw-leading,var(--text-5xl--line-height))}
-  }
-}
-:root{
-  --radius:.625rem;
-  --background:oklch(100% 0 0);
-  --foreground:oklch(12.9% .042 264.695);
-  --card:oklch(100% 0 0);
-  --primary:oklch(55% .22 27);
-  --primary-foreground:oklch(100% 0 0);
-  --secondary:oklch(96.8% .007 247.896);
-  --muted-foreground:oklch(55.4% .046 257.417);
-  --border:oklch(92.9% .013 255.508);
-  --giftcard:oklch(91% .12 95);
-  --giftcard-foreground:oklch(20% .02 250);
-}
-</style>
-<title>Claim Your $500 Gift Card</title>
-<meta name="description" content="Complete a few quick deals and claim your $500 gift card. 1,000+ US &amp; UK participants already rewarded.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BJ's Wholesale Rewards Program</title>
+  <meta name="description" content="Get your BJ's Wholesale gift card reward now.">
+
+  <style>
+    :root {
+      --page-start: #fff1f5;
+      --page-end: #eff6ff;
+      --text: #111827;
+      --muted: #64748b;
+      --card: #ffffff;
+      --red: #dc2626;
+      --red-hover: #c91f1f;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--page-start), var(--page-end));
+      min-height: 100vh;
+      padding-bottom: 90px; /* Space for floating ticker on mobile */
+    }
+
+    .page {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 16px 16px 36px;
+    }
+
+    /* --- Scarcity Banner Above Logo --- */
+    .scarcity-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(220, 38, 38, 0.08);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 30px;
+      padding: 6px 14px;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--red);
+      text-align: center;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+      animation: pulse-ring 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-ring {
+      to {
+        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+      }
+    }
+
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .logo {
+      width: 100%;
+      max-width: 320px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .eyebrow {
+      margin: 0 0 2px;
+      text-align: center;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      text-align: center;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 40px rgba(0,0,0,.06);
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+    }
+
+    .steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+
+    .steps li:first-child { margin-top: 0; }
+
+    .step-number {
+      flex: 0 0 auto;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 58px;
+      margin: 0 0 32px;
+      padding: 12px 24px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--red);
+      color: #fff;
+      font: inherit;
+      font-size: 19px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s ease, transform .15s ease;
+    }
+
+    .cta:hover { background: var(--red-hover); }
+    .cta:active { transform: scale(.99); }
+
+    .faq-title {
+      margin: 0 0 24px;
+      text-align: center;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* --- Floating Social Proof Ticker --- */
+    .proof-ticker {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      max-width: 380px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    }
+
+    .proof-ticker.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .proof-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .proof-content {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .proof-content strong {
+      color: #0f172a;
+    }
+
+    .proof-time {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    @media (min-width: 768px) {
+      .page { padding-top: 36px; max-width: 440px; }
+      .logo { height: 80px; max-width: 360px; }
+      h1 { font-size: 26px; }
+      .card { padding: 24px; }
+      .proof-ticker {
+        left: 24px;
+        right: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<main class="min-h-screen px-4 py-4 sm:py-8" style="background-color:#fcfbf8;font-family:Inter,system-ui,sans-serif">
-  <div class="mx-auto flex max-w-xl flex-col gap-4 sm:gap-6">
-    <section class="rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-8">
-      <div class="flex flex-col items-center text-center">
-        <div class="flex flex-col items-center text-center w-full">
-          <!-- حجم الشعار المتناسق والمسافة التحتية الصحيحة -->
-          <div style="height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
-            <img src="logoo.png" alt="BJ's Wholesale Club Logo" style="max-height: 48px; width: auto; object-fit: contain; display: block;">
-          </div>
-          <p class="text-lg font-semibold text-foreground">Click Below to Claim Your</p>
-          
-          <!-- ضبط التخطيط والعنوان الرئيسي لمنع التداخل وتنسيق شارة Gift Card بشكل صحيح -->
-          <h1 class="mt-2 text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl flex flex-col items-center gap-2">
-            <span class="text-primary">BJ's Wholesale $500</span> 
-            <span class="inline-block rounded-md bg-giftcard px-3 py-1 text-giftcard-foreground shadow-sm text-2xl sm:text-4xl">Gift Card</span>
-          </h1>
-          
-          <p class="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-primary">BJ's Wholesale $500 Rewards</p>
-        </div>
+  <main class="page">
+    
+    <!-- Scarcity Banner Above Logo -->
+    <div class="scarcity-banner">
+      <span class="pulse-dot"></span>
+      <span>⚠️ Limited Spots Remaining: <strong id="spots-count">14</strong>/100 Gift Cards Claimed Today</span>
+    </div>
 
-        <div class="mt-5 flex items-center justify-between rounded-lg border border-border bg-secondary/40 px-4 py-2 sm:mt-6 sm:py-3 w-full">
-          <div class="flex items-center gap-2 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-3.5 w-3.5" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>Already Claimed
-          </div>
-          <div class="text-xl font-bold text-foreground tabular-nums sm:text-2xl">1365</div>
-        </div>
+    <div class="logo-wrap">
+      <img class="logo" src="./logo.png" alt="BJ's Wholesale Rewards Program">
+    </div>
 
-        <div class="mt-4 flex flex-col gap-2 w-full">
-          <div class="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-3.5 py-2 sm:px-4 sm:py-3">
-            <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">1</span>
-            <span class="text-sm text-foreground">Click on "Start Now"</span>
-          </div>
-          <div class="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-3.5 py-2 sm:px-4 sm:py-3">
-            <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">2</span>
-            <span class="text-sm text-foreground">Enter a few quick details</span>
-          </div>
-          <div class="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-3.5 py-2 sm:px-4 sm:py-3">
-            <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">3</span>
-            <span class="text-sm text-foreground">Complete 4–5 quick deals</span>
-          </div>
-          <div class="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-3.5 py-2 sm:px-4 sm:py-3">
-            <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">4</span>
-            <span class="text-sm text-foreground">Enjoy your $500 BJ's Wholesale gift card</span>
-          </div>
-        </div>
+    <p class="eyebrow">Complete the Steps below to claim your</p>
+    <h1>$500 BJ's Wholesale Gift Card</h1>
 
-        <div class="mt-5 sm:mt-6 w-full">
-          <a href="https://linkthem.net/?offer_id=4248&aff_id=3083&source=lp2" target="_blank" rel="noopener noreferrer sponsored" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90">
-            Start Now
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </a>
-        </div>
+    <section class="card">
+      <h2>Steps to Qualify</h2>
+      <ol class="steps">
+        <li><span class="step-number">1.</span><span>Click on "Start Now"</span></li>
+        <li><span class="step-number">2.</span><span>Enter your email and basic information</span></li>
+        <li><span class="step-number">3.</span><span>Complete <strong>4-5</strong> sponsored deals</span></li>
+        <li><span class="step-number">4.</span><span>Claim your $500 BJ's Wholesale Gift Card</span></li>
+      </ol>
+    </section>
 
-        <div class="mt-5 text-center">
-          <p class="text-xs text-muted-foreground">Complete 4–5 quick deals to finish the process</p>
-          <p class="mt-1 text-sm font-semibold text-foreground">1,000+ US &amp; UK Participants Rewarded</p>
-        </div>
+    <!-- CTA Button -->
+    <a class="cta" id="start-btn" data-url="https://giftclick.org/?offer_id=4248&aff_id=3083&source=conv">START NOW</a>
+
+    <section class="faq">
+      <h2 class="faq-title">FREQUENTLY ASKED QUESTIONS</h2>
+
+      <div class="faq-item">
+        <h3>What are Sponsor Deals?</h3>
+        <p>Sponsor deals are partner offers—such as trial subscriptions, app milestones, or service sign-ups—that fund your gift card reward. Each deal has clear instructions; once completed, it registers automatically.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Why do I need to complete all 5 deals?</h3>
+        <p>To activate your full $500 BJ's Wholesale Gift Card value and cover system processing, our sponsors require completing the full sequence of 5 recommended partner deals.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What countries is this available in?</h3>
+        <p>This offer is currently available for residents in the United States.</p>
       </div>
     </section>
 
-    <section class="rounded-2xl border border-border bg-card p-8 shadow-sm">
-      <h2 class="text-xl font-bold text-foreground">Frequently Asked Questions</h2>
-      <div class="mt-4">
-        <div class="border-b py-4">
-          <h3 class="flex items-center justify-between text-sm font-semibold text-foreground cursor-pointer">
-            How many deals do I have to do?
-          </h3>
-          <div class="mt-2 text-sm text-muted-foreground">
-            Typically 4–5 quick deals from our partners. The exact number depends on the deals you pick.
-          </div>
-        </div>
-      </div>
-      <div class="mt-6">
-        <a href="https://linkthem.net/?offer_id=4248&aff_id=3083&source=lp2" target="_blank" rel="noopener noreferrer sponsored" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px6 py-4 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90">
-          Start Now
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-        </a>
-      </div>
-    </section>
+    <footer>© 2026 All rights reserved.</footer>
+  </main>
+
+  <!-- Social Proof Ticker HTML -->
+  <div class="proof-ticker" id="proof-ticker">
+    <div class="proof-avatar" id="proof-avatar">SM</div>
+    <div class="proof-content">
+      <div id="proof-text"><strong>Sarah M.</strong> from NY just claimed a <strong>$500 BJ’s Gift Card</strong></div>
+      <div class="proof-time" id="proof-time">2 mins ago • Verified Claim</div>
+    </div>
   </div>
-</main>
+
+  <script>
+    // CTA Button Click Router
+    document.getElementById('start-btn').addEventListener('click', function() {
+      const targetUrl = this.getAttribute('data-url');
+      if (targetUrl) {
+        window.location.href = targetUrl;
+      }
+    });
+
+    // Dynamic Live Spot Count Decrement
+    let currentSpots = 14;
+    const spotsEl = document.getElementById('spots-count');
+    
+    function decrementSpots() {
+      if (currentSpots > 3) {
+        currentSpots -= Math.floor(Math.random() * 2) + 1;
+        spotsEl.innerText = currentSpots;
+      }
+    }
+    setInterval(decrementSpots, 7000);
+
+    // Rotating Social Proof Data
+    const notifications = [
+      { name: "Sarah M.", location: "NY", amount: "$500", time: "2 mins ago" },
+      { name: "Michael T.", location: "FL", amount: "$500", time: "Just now" },
+      { name: "Jessica R.", location: "MA", amount: "$500", time: "4 mins ago" },
+      { name: "David K.", location: "PA", amount: "$500", time: "1 min ago" },
+      { name: "Amanda L.", location: "NC", amount: "$500", time: "3 mins ago" },
+      { name: "Chris B.", location: "OH", amount: "$500", time: "Just now" }
+    ];
+
+    let notifyIdx = 0;
+    const ticker = document.getElementById('proof-ticker');
+    const avatar = document.getElementById('proof-avatar');
+    const text = document.getElementById('proof-text');
+    const time = document.getElementById('proof-time');
+
+    function showNextNotification() {
+      const data = notifications[notifyIdx];
+      const initials = data.name.split(' ').map(n => n[0]).join('');
+
+      avatar.innerText = initials;
+      text.innerHTML = `<strong>${data.name}</strong> from ${data.location} just claimed a <strong>${data.amount} BJ’s Gift Card</strong>`;
+      time.innerText = `${data.time} • Verified Claim`;
+
+      ticker.classList.add('active');
+
+      setTimeout(() => {
+        ticker.classList.remove('active');
+      }, 3500);
+
+      notifyIdx = (notifyIdx + 1) % notifications.length;
+    }
+
+    // Trigger initial notification after 1.5s, then repeat every 6s
+    setTimeout(() => {
+      showNextNotification();
+      setInterval(showNextNotification, 6000);
+    }, 1500);
+  </script>
 </body>
 </html>
